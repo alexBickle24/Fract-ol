@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/03/27 01:26:42 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/27 02:18:53 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,13 @@
 typedef struct	s_mlx_enviroment
 {
 	void				*mlx_var;//lo que devuelve mlx.init
-	void				*windows;//lo que devuelve 
+	void				*window;//lo que devuelve 
 	t_image_data		*img_data;
-	t_window_data		*win_data;
 }				t_mlx_enviroment;
-
-typedef struct	s_window_data//se podrian usar tambien defines y flags para modificarlo abra que destruit y abrir ventanas
-{
-	int				width;
-	int				height;
-	t_window_data	*next;
-}				t_window_data;
 
 typedef struct	s_image_data
 {
-	void	*img;//lo que devuelve mlx_new_image
+	void	*img_var;//lo que devuelve mlx_new_image
 	char	*bit_map_address;//lo que devuelve mlx_get_data_addr
 	int		bits_per_pixel;//para saber cuantos bits hay en un pixel
 	int		line_length;//para saber cuantos bytes hay en una fila de la imagen
@@ -68,32 +60,21 @@ typedef struct	s_complex_factors
 }	t_complex_factors;
 
 
-//si puediese usar globales tendria sentido
-// typedef struct	s_set_select
-// {
-// 	char	*name;
-// 	int		argz;
-// 	char	**args;
-// 	int		(*f)(t_mlx_utils *, t_image_data, int, int);
-// 	t_set_select	*next_set;
-// }				t_set_select;
-
-
 ///////////////////////////***Prototipes***////////////////////////
 
 //SETS
-void		mandelbrot_set(t_mlx_utils *mlx, t_image_data *img);
-void		julia_set(t_mlx_utils *mlx, t_image_data *img);
+void		mandelbrot_set(t_mlx_enviroment *mlx, t_image_data *img);
+void		julia_set(t_mlx_enviroment *mlx, t_image_data *img);
 
 //SET_MLX_ENVIROMENT_TO_RENDER
-t_mlx_utils	*setup_mlx_enviroment(t_image_data **image);
+t_mlx_enviroment	*setup_mlx_enviroment(t_mlx_enviroment **mlx, t_image_data **img);
 
 //SET IMAGE
-char		select_image_to_render(t_mlx_utils *mlx, char **argv, int argz);
+char		select_image_to_render(t_mlx_enviroment *mlx, char **argv, int argz);
 char		**load_args_table(int num_args, char **argv);
 
 //RENDER
-void		render_set(t_mlx_utils *mlx, t_image_data *image, int (*set_pixel)(t_mlx_utils *, t_image_data*, int, int));
+void		render_set(t_mlx_enviroment *mlx, t_image_data *image, int (*set_pixel)(t_mlx_enviroment *, t_image_data*, int, int));
 void		xy_to_image_coords(t_complex_factors *z, int x, int y);
 void		apply_zoom_and_moves(t_complex_factors	*z, int	x, int y);
 void		mlx_put_image_to_window(/**/);//cambiar mlx_data por mlx enviroment.

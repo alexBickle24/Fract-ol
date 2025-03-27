@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 05:56:59 by alex              #+#    #+#             */
-/*   Updated: 2025/03/27 01:27:27 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/27 02:51:55 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,39 @@
 
 int	main(int argz, char **argv)
 {
-	t_mlx_enviroment		*mlx;
-	t_image_data	*image;
+	t_mlx_enviroment	*mlx;
 	
 	//parseo de limitees
 	if (argz < 2)
 		ft_error("Need more arguments\n");
 	//seleccionar imagen segun argumentos;
-	select_image_to_render(image, argv, argz);
+	select_image_to_render(mlx->img_data, argv, argz);
 	//conectar con API, crear ventana y crear objeto imagen.
-	if ((mlx = setup_mlx_enviroment(&image)) == NULL)
+	if ((mlx = setup_mlx_enviroment(&(mlx->img_data))) == NULL)
 		return (1);
 	//renderizar el set que queramos representar
-	render_set(mlx, image, mandelbrot_set);
+	render_set(mlx, mlx->img_data, mandelbrot_set);
 	//mantener el programa en ejecucion hasta que evento (API X11) lo pare.
 	mlx_loop(mlx->mlx_var);
 	return (0);
 }
 
-t_mlx_enviroment	*setup_mlx_enviroment(t_image_data **image)
+t_mlx_enviroment	*setup_mlx_enviroment(t_mlx_enviroment	**mlx, t_image_data **img)
 {
-	t_mlx_enviroment		*mlx;
-
-	mlx->mlx_var = mlx_init();
-	if (!mlx->mlx_var)
+	if (!mlx)
 		return (NULL);
-	mlx->windows = mlx_new_window(mlx->mlx_var, mlx->win_data->height, mlx->win_data->height, "Fractol");
-	if (!mlx->windows)
-	{
-		//free_window 
+	mlx[0]->mlx_var = mlx_init();
+	if (!mlx[0]->mlx_var)
 		return (NULL);
-	}
-	image[0]->img = mlx_new_image(mlx->mlx_var, HEIGHT, WIDTH);
-	if (!image[0]->img)
-	{
-		//free_image and window
-		return (NULL);
-	}
-	mlx->img_data->bit_map_address = mlx_get_data_addr(image[0]->img, &mlx->img_data->bits_per_pixel, &mlx->img_data->line_length, &mlx->img_data->endian);
-	if (!mlx->img_data->bit_map_address)
-	{
-		//freee image and window
-		return (NULL);
-	}
+	mlx[0]->window = mlx_new_window(mlx[0]->mlx_var, WIDTH, HEIGHT, "Fractol");
+	if (!mlx[0]->window)
+		return (/*free_window and free mlx_va*/NULL);
+	img[0]->img_var = mlx_new_image(mlx[0]->mlx_var, HEIGHT, WIDTH);
+	if (!mlx[0]->img_data->img_var)
+		return (/*free_window and free mlx_va and imag*/NULL);
+	img[0]->bit_map_address = mlx_get_data_addr(img[0]->img_var, img[0]->bits_per_pixel, img[0]->line_length, img[0]->endian);
+	if (img[0]->bit_map_address)
+		return (/*free_window and free mlx_va and imag*/NULL);
 }
 
 char	select_image_to_render(t_mlx_enviroment *mlx, char **argv, int argz)
