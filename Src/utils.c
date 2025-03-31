@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:13:38 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 07:08:36 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 08:39:52 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,5 @@ void	ft_error(char *message)
 	ft_putstr_fd(message, 2);
 	return (1);	
 }
+
+//funcion de close structs de mlx para evento de cerrar ventana
