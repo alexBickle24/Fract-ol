@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/03/27 02:18:53 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 05:10:40 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../include/libft/libft.h"
 #include "../include/Minilibx/mlx.h"
 #include "../include/Minilibx/mlx_int.h"
-// #include <stdio.h>
+#include <stdio.h>
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -55,39 +55,43 @@ typedef struct	s_image_data
 
 typedef struct	s_complex_factors
 {
-	double		a;//parte real
-	double		b;//parte imaginaria
+	double		real;//parte real
+	double		imaginary;//parte imaginaria
 }	t_complex_factors;
 
 
 ///////////////////////////***Prototipes***////////////////////////
 
-//SETS
-void		mandelbrot_set(t_mlx_enviroment *mlx, t_image_data *img);
-void		julia_set(t_mlx_enviroment *mlx, t_image_data *img);
 
 //SET_MLX_ENVIROMENT_TO_RENDER
 t_mlx_enviroment	*setup_mlx_enviroment(t_mlx_enviroment **mlx, t_image_data **img);
+char				select_image_to_render(t_mlx_enviroment *mlx, char **argv, int argz);
 
-//SET IMAGE
+//
 char		select_image_to_render(t_mlx_enviroment *mlx, char **argv, int argz);
-char		**load_args_table(int num_args, char **argv);
 
 //RENDER
 void		render_set(t_mlx_enviroment *mlx, t_image_data *image, int (*set_pixel)(t_mlx_enviroment *, t_image_data*, int, int));
 void		xy_to_image_coords(t_complex_factors *z, int x, int y);
 void		apply_zoom_and_moves(t_complex_factors	*z, int	x, int y);
+void		buffer_my_pixel();
 void		mlx_put_image_to_window(/**/);//cambiar mlx_data por mlx enviroment.
 
-//MATHS
+//SETS
+void		mandelbrot_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors *z);
+void		julia_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors *z);
+char		mand_jul_coords_necesary_conditions(double real, double imaginary);
 
+//MATHS
+size_t	ft_power_of(size_t  num, int power);
 
 //MANAGE EVENTS
 
 
 //UTILS
+double		ft_atodbl(const char *str);
+char		**load_args_table(int num_args, char **argv);
 void		ft_error(char *message);
-double		atodbl(char *str);
 
 
 #endif
