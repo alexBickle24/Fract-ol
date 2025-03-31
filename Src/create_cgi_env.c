@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:09:46 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 07:04:24 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 07:09:18 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	set_default_values(t_image_data *img)
 	int	origin_x;
 	int	origin_y;
 	
-	//este calculo es para luego poder centrar la imagen (hacer la transformacion lineal)
 	if (WIDTH % 2 != 0)
 		origin_x = WIDTH / 2;
 	else 

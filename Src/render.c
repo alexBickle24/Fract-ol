@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:47 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 07:06:09 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 07:08:55 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	xy_to_image_coords(t_complex_factors *z, int x, int y, t_image_data *img)
 {
-	//los mivimeintos sobre la pantalla los voy a tener que meter antes de aplicar el algoritmo y el escalado
 	z->real = (x - img->origin[0]) * ((MAND_MAX_X - MAND_MIN_X) / (WIDTH - 0));
 	z->imaginary = (y - img->origin[1]) * ((MAND_MAX_Y - MAND_MIN_Y) / (HEIGHT - 0));
-	//o los meto despues del escalado conuna relacion
 }
 
 void		apply_zoom_and_moves(t_complex_factors	*z, t_image_data *img)
@@ -54,5 +52,5 @@ void	render_set(t_mlx_enviroment *mlx, t_image_data *image)
 			buffer_my_pixel(x, y, &image, pixel_color);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_var, mlx->window, image, x, y);//cambiar mlx_data por mlx enviroment.
+	mlx_put_image_to_window(mlx->mlx_var, mlx->window, image, x, y);
 }

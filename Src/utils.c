@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:13:38 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 05:07:33 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 07:08:36 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ double	ft_atodbl(const char *nptr)
 	result = (double)num / (double)ft_power_of(10, 3-1);
 	return (result * sing);
 }
-
-// int main(void)
-// {
-// 	char	*str;
-// 	double	num;
-
-// 	str = "435435543534.123";
-// 	num = ft_atodbl(str);
-// 	printf("el resultado es : %lf\n", num);
-// 	return (0);
-// }
 
 char	**load_args_table(int num_args, char **argv)
 {
