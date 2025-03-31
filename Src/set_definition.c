@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 00:59:27 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 01:38:33 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 06:34:41 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,7 @@ void	mandelbrot_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors 
 	//al ser mandelbroot el valor inicial de "c", es igual a los valores iniciales de 
 	c->real = z->real;
 	c->imaginary = z->imaginary;
-	//funcion de algoritmo de escalado
-	i = 0;
-	while (i < img->max_iter)
-	{
-		z->real = ft_power(z->real, 2) - ft_power(z->imaginary, 2);
-		z->imaginary = 2 * z->real + z->imaginary;
-		if (ft_power(z->real, 2) + t_power(z->imaginary, 2) > 4)
-		{
-			color = 
-			return ;
-		}
-	}
-	color = BLACK;
-	return ;
-}
-
-void	julia_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors *z)
-{
-	t_complex_factors	*c;
-	int					i;
-	int					color;
 	
-	//al ser mandelbroot el valor inicial de "c", es igual a los valores iniciales de 
-	c->real = z->real;
-	c->imaginary = z->imaginary;
 	//funcion de algoritmo de escalado
 	i = 0;
 	while (i < img->max_iter)
@@ -56,7 +32,33 @@ void	julia_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors *z)
 		{
 			if (i == img->max_iter - 1)
 				return (GOLD);
-			return ;
+			return (get_color_from_palethe(i, img->max_iter));
+		}
+	}
+	return (BLACK);
+}
+
+void	julia_set(t_mlx_enviroment *mlx, t_image_data *img, t_complex_factors *z)
+{
+	t_complex_factors	*c;
+	int					i;
+	int					color;
+	
+	//al ser mandelbroot el valor inicial de "c", es igual a los valores iniciales de 
+	c->real = ft_atodbl(img->config[0]);
+	c->imaginary = ft_atodbl(img->config[1]);
+	
+	//funcion de algoritmo de escalado
+	i = 0;
+	while (i < img->max_iter)
+	{
+		z->real = ft_power(z->real, 2) - ft_power(z->imaginary, 2);
+		z->imaginary = 2 * z->real + z->imaginary;
+		if (!mand_jul_coords_necesary_conditions(z->real, z->imaginary))
+		{
+			if (i == img->max_iter - 1)
+				return (GOLD);
+			return (get_color_from_palethe(i, img->max_iter));
 		}
 	}
 	return(BLACK);
