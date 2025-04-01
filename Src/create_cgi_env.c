@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:09:46 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 08:46:40 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 09:28:23 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	setup_mlx_enviroment(t_mlx_enviroment *mlx, t_image_data *img)
 	img->bit_map_address = mlx_get_data_addr(img->img_var, &(img->bits_per_pixel), &(img->line_length), &(img->endian));
 	if (!img->bit_map_address)
 		return (/*free_window and free mlx_va and imag*/0);
-	//aqui va mlx events init (porque va a aqui)	
+	//aqui va mlx_events_hook para que este esperando a que sucedan eventos en la ventana 	
 	set_default_values(img);
 	mlx->img_data = img;
 	return (1);

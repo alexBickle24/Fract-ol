@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 08:40:48 by alex             ###   ########.fr       */
+/*   Updated: 2025/03/31 09:26:30 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ typedef struct	s_image_data
 	void	(*set_def)(t_mlx_enviroment *, t_image_data *, t_complex_factors *);
 	char	**config;
 	int		max_iter;
-	int		color;
+	int		first_color;
 	double	zoom;
 	int		origin[2];
-	int		with[2];
+	double		with[2];
 }				t_image_data;
 
 typedef struct	s_complex_factors
