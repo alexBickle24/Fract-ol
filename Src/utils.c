@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:13:38 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 08:39:52 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/01 17:00:26 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ double	ft_atodbl(const char *nptr)
 {
 	long	sing;
 	long	num;
-	int		div;
+	int		div;//
+	int		point_control;//
 	int		i;
-	double	result;
-	int		point_control;
+	double	result;//
 
 	sing = 1;
 	num = 0;
 	point_control = 0;
-	i = 0;
-	div = 0;
-	while ((nptr[i] == 32 || (nptr[i] >= 9) && nptr[i] <= 13))
+	i = 0;//
+	div = 0;//
+	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
@@ -36,6 +36,7 @@ double	ft_atodbl(const char *nptr)
 	}
 	if (nptr[i] == '.')
 		return (0);
+	//esto lo puedo meter en una funcion.
 	while (((nptr[i] >= '0' && nptr[i] <= '9') || nptr[i] == '.'))
 	{
 		if (nptr[i] == '.' && point_control == 0)
@@ -46,7 +47,6 @@ double	ft_atodbl(const char *nptr)
 			num = num * 10 + (nptr[i] - '0');
 		i++;
 	}
-	printf("num es : %ld\n", num);
 	if (div == 0)
 		return (num * sing);
 	result = (double)num / (double)ft_power_of(10, 3-1);
@@ -77,7 +77,7 @@ void	ft_error(char *message)
 	if (!message)
 		return ;
 	ft_putstr_fd(message, 2);
-	return (1);	
+	return ;
 }
 
 //funcion de close structs de mlx para evento de cerrar ventana

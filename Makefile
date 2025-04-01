@@ -6,7 +6,7 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 05:57:11 by alex              #+#    #+#              #
-#    Updated: 2025/03/04 08:46:07 by alex             ###   ########.fr        #
+#    Updated: 2025/04/01 17:08:37 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,13 @@ LINK_FLAGS = -L$(INCLUDE_FILE)/libft -lft -L$(INCLUDE_FILE)/Minilibx -lmlx_Linux
 	
 # -L$(INCLUDE_FILE)/ft_printf -lftprintf
 FILE_NAME = fractol
-SRC_FILE = /home/$(USER)/fractol/$(FILE_NAME)/Src
-HEADERS = /$(SRC_FILE)/fractol.h
-INCLUDE_FILE = /home/$(USER)/fractol/$(FILE_NAME)/include
-SRC = $(SRC_FILE)/main.c
+SRC_FILE = Src
+HEADERS = $(SRC_FILE)/fractol.h
+INCLUDE_FILE = include
+SRC = $(SRC_FILE)/main.c $(SRC_FILE)/math_utils.c $(SRC_FILE)/utils.c \
+		$(SRC_FILE)/set_definition.c $(SRC_FILE)/render.c \
+		$(SRC_FILE)/create_cgi_env.c $(SRC_FILE)/events.c \
+		$(SRC_FILE)/color_treatment.c
 
 LIBFT = libft.a
 MINI_LIBX = libmlx.a

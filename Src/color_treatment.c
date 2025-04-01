@@ -6,13 +6,13 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:14:11 by alex              #+#    #+#             */
-/*   Updated: 2025/03/31 04:53:40 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/01 17:17:16 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	get_color_from_palethe(int i, int max_i, int color)
+int	get_color_from_palethe(int i, int max_i)
 {
 	int color_map[42];
 
@@ -41,7 +41,7 @@ int	get_color_from_palethe(int i, int max_i, int color)
 
 int	select_color(int *color_map, int i, int max_i)
 {
-	double elements;
+	// double elements;
 	double factor;
 
 	factor = (39 / (double)max_i);
