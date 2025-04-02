@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:14:11 by alex              #+#    #+#             */
-/*   Updated: 2025/04/01 17:17:16 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 06:36:38 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_color_from_palethe(int i, int max_i)
 {
-	int color_map[42];
+	int color_map[79];
 
 	(color_map[0] = 0x36045d, color_map[1] = 0x420260);
 	(color_map[2] = 0x4d0062, color_map[3] = 0x580064);
@@ -36,6 +36,20 @@ int	get_color_from_palethe(int i, int max_i)
 	(color_map[34] = 0xffc724, color_map[35] = 0xffd000);
 	(color_map[36] = 0xffda00, color_map[37] = 0xffe400);
 	(color_map[38] = 0xffed00, color_map[39] = 0xfff700);
+	(color_map[40] = 0x292f56, color_map[41] = 0x28345d, color_map[42] = 0x263963);
+	(color_map[43] = 0x233e6a, color_map[44] = 0x1f4370, color_map[45] = 0x194876);
+	(color_map[46] = 0x104e7c, color_map[47] = 0x005382, color_map[48] = 0x005987);
+	(color_map[49] = 0x005e8d, color_map[50] = 0x006491, color_map[51] = 0x006994);
+	(color_map[52] = 0x006f96, color_map[53] = 0x007498, color_map[54] = 0x00799a);
+	(color_map[55] = 0x007f9c, color_map[56] = 0x00849e, color_map[57] = 0x00899f);
+	(color_map[58] = 0x008fa1, color_map[59] = 0x0094a2, color_map[60] = 0x009aa3);
+	(color_map[61] = 0x009fa4, color_map[62] = 0x00a5a4, color_map[63] = 0x00aba4);
+	(color_map[64] = 0x00b0a4, color_map[65] = 0x00b6a3, color_map[66] = 0x00bca1);
+	(color_map[67] = 0x00c39e, color_map[68] = 0x00c89b, color_map[69] = 0x00cd98);
+	(color_map[70] = 0x00d295, color_map[71] = 0x1cd791, color_map[72] = 0x38dc8d);
+	(color_map[73] = 0x4de189, color_map[74] = 0x5ee584, color_map[75] = 0x6fea80);
+	(color_map[76] = 0x7eee7c, color_map[77] = 0x8ef278, color_map[78] = 0x9df674);
+	(color_map[79] = 0xacfa70);
 	return(select_color(color_map, i, max_i));
 }
 

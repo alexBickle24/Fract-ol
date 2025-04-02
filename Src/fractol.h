@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/04/01 19:37:20 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 06:30:36 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 #include "../include/Minilibx/mlx.h"
 #include "../include/Minilibx/mlx_int.h"
 
-#define WIDTH 400
-#define HEIGHT 400
+#define WIDTH 800
+#define HEIGHT 800
 
 #define MAND_MAX_X 2
 #define MAND_MIN_X -2
 #define MAND_MAX_Y 2
 #define MAND_MIN_Y -2
 
-#define GOLD 1
-#define BLACK 0
+#define PAPAYA 		0xffefd5
+#define BLACK		0x00000000
+# define WHITE      0xFFFFFF00
 
 ///////////////////////////***Structs***///////////////////////////
 typedef struct s_image_data t_image_data;

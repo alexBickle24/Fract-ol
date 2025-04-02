@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:09:46 by alex              #+#    #+#             */
-/*   Updated: 2025/04/01 19:34:48 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 06:37:10 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ char	select_set_to_render(t_image_data *img, char **argv, int argz)
 		img->set_def = julia_set;
 		img->config = load_args_table(argz - 2, argv);
 	}
-	else
+	else 
 		return (ft_putstr_fd("You have to chose Mandelbrot or Julia\n", 2), 0);
 	return (1);
 }
-
 
 char	setup_mlx_enviroment(t_mlx_enviroment *mlx, t_image_data *img)
 {
@@ -54,11 +53,8 @@ char	setup_mlx_enviroment(t_mlx_enviroment *mlx, t_image_data *img)
 	if (!img->bit_map_address)
 		return (mlx_destroy_image(mlx->mlx_var, mlx->img_data->img_var), mlx_destroy_window(mlx->mlx_var, mlx->window), mlx_destroy_display(mlx->mlx_var), free(mlx->mlx_var), 0);
 	mlx->img_data = img;
-	printf("llega aqui-2\n");
 	set_default_values(img);
-	printf("llega aqui-1\n");
 	create_hooks(mlx);
-	printf("llega aqui01\n");
 	return (1);
 }
 
@@ -80,7 +76,7 @@ void	set_default_values(t_image_data *img)
 	img->with[0] = 0.0;
 	img->with[1] = 0.0;
 	img->zoom = 1.00;
-	img->max_iter = 10;
+	img->max_iter = 79;
 }
 
 //1.-init mlx events
