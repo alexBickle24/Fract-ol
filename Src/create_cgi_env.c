@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:09:46 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 06:37:10 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 13:19:06 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	select_set_to_render(t_image_data *img, char **argv, int argz)
 		img->set_def = mandelbrot_set;
 		img->config = load_args_table(argz - 2, argv);
 	}
-	else if (!ft_strncmp(argv[1], "julia", 5) && ft_strlen(argv[1]) == 5)
+	else if (!ft_strncmp(argv[1], "Julia", 5) && ft_strlen(argv[1]) == 5)
 	{
 		if(argz != 4)
-			return (ft_putstr_fd("You need 4 arguments for Julia\n", 2), 0);
+			return (ft_putstr_fd(JULIA_ERRORS, 2), 0);
 		img->name = "Julia";
 		img->set_def = julia_set;
 		img->config = load_args_table(argz - 2, argv);
@@ -58,6 +58,7 @@ char	setup_mlx_enviroment(t_mlx_enviroment *mlx, t_image_data *img)
 	return (1);
 }
 
+
 void	set_default_values(t_image_data *img)
 {
 	int	origin_x;
@@ -76,7 +77,7 @@ void	set_default_values(t_image_data *img)
 	img->with[0] = 0.0;
 	img->with[1] = 0.0;
 	img->zoom = 1.00;
-	img->max_iter = 79;
+	img->max_iter = 13;
 }
 
 //1.-init mlx events

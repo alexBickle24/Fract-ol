@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 08:43:31 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 06:22:53 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 13:15:46 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ int		manage_key(int keysym, t_mlx_enviroment *mlx)
 	else if (keysym == XK_minus || keysym == XK_KP_Subtract)
 		(mlx->img_data->max_iter -= 10, happend = 1);
 	else if (keysym == XK_Left)
-		(mlx->img_data->with[0] += (0.5 * mlx->img_data->zoom), happend = 1);
+		(mlx->img_data->with[0] -= (0.5 / mlx->img_data->zoom), happend = 1);
 	else if (keysym == XK_Right)
-		(mlx->img_data->with[0] -= (0.5 * mlx->img_data->zoom), happend = 1);
+		(mlx->img_data->with[0] += (0.5 / mlx->img_data->zoom), happend = 1);
 	else if (keysym == XK_Up)
-		(mlx->img_data->with[1] -= (0.5 * mlx->img_data->zoom), happend = 1);
+		(mlx->img_data->with[1] -= (0.5 / mlx->img_data->zoom), happend = 1);
 	else if (keysym == XK_Down)
-		(mlx->img_data->with[1] += (0.5 * mlx->img_data->zoom), happend = 1);
+		(mlx->img_data->with[1] += (0.5 / mlx->img_data->zoom), happend = 1);
 	if (happend)
 		render_set(mlx, mlx->img_data);
-	return (-1);
+	return (0);
 }
 
 int		manage_mouse(int button, int x, int y, t_mlx_enviroment *mlx)
@@ -43,10 +43,15 @@ int		manage_mouse(int button, int x, int y, t_mlx_enviroment *mlx)
 
 	k = x + y;
 	if (button == Button5 && k > INT_MIN)
+	{
 		mlx->img_data->zoom *= 0.95;
+		render_set(mlx, mlx->img_data);
+	}
 	else if (button == Button4)
+	{
 		mlx->img_data->zoom *= 1.05;
-	render_set(mlx, mlx->img_data);
+		render_set(mlx, mlx->img_data);
+	}
 	return (0);
 }
 

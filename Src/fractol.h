@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 06:30:36 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 07:12:16 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@
 
 #define PAPAYA 		0xffefd5
 #define BLACK		0x00000000
-# define WHITE      0xFFFFFF00
+# define WHITE      0xFFFFFFFF
+# define GOLD      0xFFFFFF00
+
+//ERRORS
+#define JULIA_ERRORS "Julia set needs 4 arguments:\n1º: "PROGRAM_NAME"\n2º: "JULIA"\n3º: "REAL_VALUE"\n4º: "IMAGINARY_VALUE"\n"
+#define PROGRAM_NAME "'fractol'"
+#define JULIA "'Julia'"
+#define REAL_VALUE "real factor [0.0-1.5] recomended"
+#define IMAGINARY_VALUE "imaginary factor [0.0-1.5] recomended"
+
 
 ///////////////////////////***Structs***///////////////////////////
 typedef struct s_image_data t_image_data;

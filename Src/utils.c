@@ -6,11 +6,13 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:13:38 by alex              #+#    #+#             */
-/*   Updated: 2025/04/01 17:00:26 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 13:30:12 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+size_t	ft_power_of(size_t  num, int power);
 
 double	ft_atodbl(const char *nptr)
 {
@@ -49,27 +51,39 @@ double	ft_atodbl(const char *nptr)
 	}
 	if (div == 0)
 		return (num * sing);
-	result = (double)num / (double)ft_power_of(10, 3-1);
+	result = (double)num / (double)ft_power_of(10, strlen(nptr + div) - 1);
 	return (result * sing);
 }
 
 char	**load_args_table(int num_args, char **argv)
 {
-	char	**table_args;
-	int		i;
-	
-	if (num_args == 0)
-		return (NULL);
-	table_args = (char **)malloc(sizeof(char *) * num_args);
-	if (!table_args)
-		return (NULL);
-	i = 1;
-	while (i < (num_args - 1) || argv[i] != NULL)
-	{
-		table_args[i] = argv[i];
-		i++;
-	}
-	return (table_args);
+    char	**table_args;
+    int		i;
+
+    printf("entra en load args\n");
+    if (num_args <= 0 || !argv)
+        return (NULL);
+
+    // Reserva memoria solo para los punteros (filas)
+    table_args = (char **)malloc(sizeof(char *) * (num_args + 1));
+    if (!table_args)
+        return (NULL);
+
+    // Haz que cada puntero apunte directamente a las cadenas de argv
+    i = 0;
+    while (i < num_args)
+    {
+        table_args[i] = argv[num_args + i]; // Apunta directamente a las cadenas de argv
+        i++;
+    }
+
+    // Termina la tabla con NULL
+    table_args[num_args] = NULL;
+
+    printf("el valor del primer argumento es %s\n", table_args[0]);
+	printf("el valor del segundo argumento es %s\n", table_args[1]);
+	sleep(5);
+    return (table_args);
 }
 
 void	ft_error(char *message)

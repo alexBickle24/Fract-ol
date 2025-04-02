@@ -6,13 +6,11 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:07:47 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 00:34:11 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 13:17:35 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-
 
 void	scale_xy_to_image_coords(t_complex_factors *z, int x, int y, t_image_data *img)
 {
@@ -24,16 +22,9 @@ void	scale_xy_to_image_coords(t_complex_factors *z, int x, int y, t_image_data *
 	double adjusted_x = (double)(x);
 	double adjusted_y = (double)(y);
 	// no es por el ajuste del origen asi que se puede quedar asi
-	printf("scale_x: %f, scale_y: %f\n", scale_x, scale_y);
-	printf("adjusted_x: %f, adjusted_y: %f\n", adjusted_x, adjusted_y);
 
 	z->real = MAND_MIN_X + (adjusted_x * scale_x);
 	z->imaginary = MAND_MIN_Y + (adjusted_y * scale_y);
-	// sleep(4);
-	printf("z->real: %f, z->imaginary: %f\n", z->real, z->imaginary);
-	if (y == HEIGHT)
-	    sleep(5);
-	
 }
 void		apply_zoom_and_moves(t_complex_factors	*z, t_image_data *img)
 {
