@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 00:58:19 by alex              #+#    #+#             */
-/*   Updated: 2025/04/01 16:59:24 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 18:35:53 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_power_of(size_t  num, int power)
 {
 	size_t	n_square;
 	int		i;
-	
+
 	if (power < 0)
 		return (0);
 	if(power == 0)
@@ -39,7 +39,7 @@ double	power_of(double  num, int power)
 {
 	double	n_square;
 	int		i;
-	
+
 	if (power < 0)
 		return (0);
 	if(power == 0)

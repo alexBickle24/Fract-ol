@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:13:38 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 13:30:12 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 14:03:14 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,18 @@ char	**load_args_table(int num_args, char **argv)
     char	**table_args;
     int		i;
 
-    printf("entra en load args\n");
     if (num_args <= 0 || !argv)
         return (NULL);
-
-    // Reserva memoria solo para los punteros (filas)
     table_args = (char **)malloc(sizeof(char *) * (num_args + 1));
     if (!table_args)
         return (NULL);
-
-    // Haz que cada puntero apunte directamente a las cadenas de argv
     i = 0;
     while (i < num_args)
     {
-        table_args[i] = argv[num_args + i]; // Apunta directamente a las cadenas de argv
+        table_args[i] = argv[num_args + i];
         i++;
     }
-
-    // Termina la tabla con NULL
     table_args[num_args] = NULL;
-
-    printf("el valor del primer argumento es %s\n", table_args[0]);
-	printf("el valor del segundo argumento es %s\n", table_args[1]);
-	sleep(5);
     return (table_args);
 }
 

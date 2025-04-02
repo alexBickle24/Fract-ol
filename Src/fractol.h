@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 06:03:56 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 07:12:16 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 19:25:37 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "../include/Minilibx/mlx.h"
 #include "../include/Minilibx/mlx_int.h"
 
-#define WIDTH 800
-#define HEIGHT 800
+#define WIDTH 1500
+#define HEIGHT 1500
 
 #define MAND_MAX_X 2
 #define MAND_MIN_X -2
@@ -48,6 +48,7 @@ typedef struct	s_image_data
 	void	*img_var;
 	char	*name;
 	char	*bit_map_address;
+	char 	*bit_map_address_copy;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;

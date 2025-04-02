@@ -74,6 +74,6 @@ int main(void)
 {
 	double result;
 
-	result = ft_atodbl("33333.2");
+	result = ft_atodbl("-0000.2");
 	printf("el valor del resultado es %lf\n", result);
 }

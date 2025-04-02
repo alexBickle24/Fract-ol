@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 01:09:46 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 13:19:06 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 19:06:17 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ char	setup_mlx_enviroment(t_mlx_enviroment *mlx, t_image_data *img)
 								&(img->line_length), &(img->endian));
 	if (!img->bit_map_address)
 		return (mlx_destroy_image(mlx->mlx_var, mlx->img_data->img_var), mlx_destroy_window(mlx->mlx_var, mlx->window), mlx_destroy_display(mlx->mlx_var), free(mlx->mlx_var), 0);
+	img->bit_map_address_copy = img->bit_map_address;
 	mlx->img_data = img;
 	set_default_values(img);
 	create_hooks(mlx);
 	return (1);
 }
-
 
 void	set_default_values(t_image_data *img)
 {
@@ -77,32 +77,15 @@ void	set_default_values(t_image_data *img)
 	img->with[0] = 0.0;
 	img->with[1] = 0.0;
 	img->zoom = 1.00;
-	img->max_iter = 13;
+	img->max_iter = 50;
 }
 
-//1.-init mlx events
 void	create_hooks(t_mlx_enviroment *mlx)
 {
 	mlx_hook(mlx->window, KeyPress, KeyPressMask, manage_key, mlx);
 	mlx_hook(mlx->window, ButtonPress, ButtonPressMask, manage_mouse, mlx);
 	mlx_hook(mlx->window, DestroyNotify, StructureNotifyMask, close_handler, mlx);
-	// mlx_hook(mlx->window, MotionNotify, PointerMotionMask, julia_track, mlx); (EXTRA)
 }
-
-//2.- Julia track (EXTRA)
-//porque hay que se usar este evento y pra que se usa.
-// int	julia_track(int x, int y, t_mlx_enviroment *mlx)
-// {
-// 	if (!ft_strncmp(mlx->img_data->name, "julia", 5))
-// 	{
-// 		mlx->img_data->config = ((map2(x, -3, 3, 0) / map(-3, 0, WIDTH))
-// 				* mlx->img_data) + fractal->shift_x;
-// 		fractal->julia_y = ((map2(y, +3, -3, 0) / map(+3, 0, HEIGHT))
-// 				* fractal->zoom) + fractal->shift_y;
-// 		fractal_render(fractal);
-// 	}
-// 	return (0);
-// }
 
 void	destroy_mlx_componets(void (*f)(), void (*g)(), void (*t)(), t_mlx_enviroment *mlx)
 {

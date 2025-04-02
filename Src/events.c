@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 08:43:31 by alex              #+#    #+#             */
-/*   Updated: 2025/04/02 13:15:46 by alex             ###   ########.fr       */
+/*   Updated: 2025/04/02 23:31:29 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ int		manage_mouse(int button, int x, int y, t_mlx_enviroment *mlx)
 int	close_handler(t_mlx_enviroment *mlx)
 {
 	//hayq ue hacer que las funciones de cierre de la libreria no hagan segfaukt
-	(void)mlx;
-	// mlx_destroy_image(mlx->mlx_var,
-	// 	mlx->img_data->bit_map_address);
-	// mlx_destroy_window(mlx->mlx_var,
-	// 	mlx->window);
-	// mlx_destroy_display(mlx->mlx_var);
-	// free(mlx->mlx_var);
+	// (void)mlx;
+	mlx_destroy_image(mlx->mlx_var, //esta es la que falla
+		mlx->img_data->img_var);
+	//free(mlx->img_data->bit_map_address_copy); //es memeria local dentro de una estructura cunado la liberemos liberamos tambien esta memria, si intentamos liberar esto hacemos segfault
+	mlx_destroy_window(mlx->mlx_var,
+		mlx->window);
+	mlx_destroy_display(mlx->mlx_var);
+	if (mlx->img_data->config)
+		free(mlx->img_data->config);
+	free(mlx->mlx_var);
 	exit(0);
 }
