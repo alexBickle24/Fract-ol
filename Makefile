@@ -6,17 +6,16 @@
 #    By: alex <alex@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/04 05:57:11 by alex              #+#    #+#              #
-#    Updated: 2025/04/02 23:24:17 by alex             ###   ########.fr        #
+#    Updated: 2025/04/03 13:20:52 by alex             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol_a
+NAME = fractol
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 LINK_FLAGS = -L$(INCLUDE_FILE)/libft -lft -L$(INCLUDE_FILE)/Minilibx -lmlx_Linux \
 			-lXext -lX11 -lm -lz
 	
-# -L$(INCLUDE_FILE)/ft_printf -lftprintf
 FILE_NAME = fractol
 SRC_FILE = Src
 HEADERS = $(SRC_FILE)/fractol.h
@@ -32,11 +31,9 @@ PRINTF = libftprintf.a
 
 OBJS = $(SRC:.c=.o)
 
-all: $(LIBFT) $(MINI_LIBX) $(NAME) #$(PRINTF)
+all: $(LIBFT) $(MINI_LIBX) $(NAME) 
 
 libft: $(LIBFT)
-
-printf: $(PRINTF)
 
 MiniLibx: $(MINI_LIBX)
 
@@ -50,9 +47,6 @@ message:
 
 $(LIBFT): 
 	make all -C $(INCLUDE_FILE)/libft
-
-# $(PRINTF):
-# 	make all -C $(INCLUDE_FILE)/ft_printf
 
 $(MINI_LIBX):
 	make all -C $(INCLUDE_FILE)/Minilibx
@@ -71,7 +65,6 @@ clean:
 	
 fclean: clean
 	make fclean -C $(INCLUDE_FILE)/libft
-	make fclean -C $(INCLUDE_FILE)/Minilibx
 	rm -f $(NAME)
 
 re: fclean all
